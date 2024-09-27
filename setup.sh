@@ -9,9 +9,9 @@ typeNode="N"
 read -p "Master Node? (y/N)" typeNode
 
 ##############################################################################################
-#2) Disable swap & add kernel settings  
+#2) Disable swap & add comment it
   
-swapoff -a  
+swapoff -a
 sed -i '/swap/s/^\(.*\)$/#\1/' /etc/fstab
 
 
@@ -86,11 +86,7 @@ sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list   # helps tools such as c
 ##############################################################################################
 # Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:  
 apt-get update
-apt-get install -y kubelet
-
-if [[ "$typeNode" == "y" ]]; then
-        apt install kubeadm kubectl -y
-fi
+apt-get install -y kubelet kubeadm kubectl
 
 # apt-mark hold will prevent the package from being automatically upgraded or removed.  
 apt-mark hold kubelet kubeadm kubectl  
