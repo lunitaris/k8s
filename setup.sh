@@ -106,6 +106,8 @@ if [[ "$typeNode" == "y" ]]; then
         kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
         sleep 2
         kubectl get pods -n kube-system
+        echo "--------------------------------------------------------"
+        echo "run: 'kubectl get pods -n kube-system' and wait to see everything running."
 
 fi
 
