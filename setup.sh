@@ -3,6 +3,8 @@
 # copy this script and run in all master and worker nodes  
 #i1) Switch to root user [ sudo -i]  
 
+LOG_LEVEL=6
+
 typeNode="N"
 read -p "Master Node? (y/N)" typeNode
 
@@ -102,7 +104,7 @@ sleep 5
 ##############################################################################################
 #### IF MASTER NODE, INSTALL kubeadm, kubectl and Initialize the cluster
 if [[ "$typeNode" == "y" ]]; then
-        kubeadm init
+        kubeadm init --v="$LOG_LEVEL"
 fi
 
 exit 0
