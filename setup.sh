@@ -10,7 +10,8 @@ read -p "Master Node? (y/N)" typeNode
 #2) Disable swap & add kernel settings  
   
 swapoff -a  
-sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab  
+sed -i '/swap/s/^\(.*\)$/#\1/' /etc/fstab
+
 
 ##############################################################################################
 #3) Add kernel settings & Enable IP tables(CNI Prerequisites)  
@@ -58,7 +59,8 @@ apt-get install containerd.io -y
 containerd config default > /etc/containerd/config.toml  
 
 # Run following command to update configure cgroup as systemd for contianerd.  
-sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml  
+sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+
   
 # Restart and enable containerd service  
 systemctl restart containerd  
