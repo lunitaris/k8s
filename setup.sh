@@ -101,11 +101,11 @@ sleep 5
 #### IF MASTER NODE, INSTALL kubeadm, kubectl and Initialize the cluster
 if [[ "$typeNode" == "y" ]]; then
         kubeadm init --v="$LOG_LEVEL"
-        sleep 20
-        echo "----------- INSTALLING NETWORK PLUGIN ---------------"
-        kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
-        sleep 2
-        kubectl get pods -n kube-system
+        echo "Please run commands printed above, and install Network Plugin.."
+        echo ""
+        echo "----------- CMDLINES FOR INSTALLING NETWORK PLUGIN ---------------"
+        echo "kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml"
+        echo "kubectl get pods -n kube-system"
         echo "--------------------------------------------------------"
         echo "run: 'kubectl get pods -n kube-system' and wait to see everything running."
 
